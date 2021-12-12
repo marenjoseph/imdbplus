@@ -54,7 +54,7 @@ const Movie = ({ data, level }) => {
     var genres = data.rels.filter(obj => {
       return content.genres.includes(obj.uuid);
     })
-    var agerating = data.rels.filter(obj => {
+    var ageratings = data.rels.filter(obj => {
       return content.agerating.includes(obj.uuid);
     })
   } else {
@@ -92,7 +92,7 @@ const Movie = ({ data, level }) => {
             ))}
           </div>
           <div className={styles.genrelist}>
-            {agerating.map((item, index) => (
+            {ageratings.map((item, index) => (
               <div className={styles.genre}>
                 {item.content.title}
               </div>
