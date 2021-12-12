@@ -55,6 +55,7 @@ const Movie = ({ data, level }) => {
       return content.genres.includes(obj.uuid);
     })
     var ageratings = data.rels.filter(obj => {
+      if (content.agerating === undefined) {return}
       return content.agerating.includes(obj.uuid);
     })
   } else {
