@@ -54,6 +54,9 @@ const Movie = ({ data, level }) => {
     var genres = data.rels.filter(obj => {
       return content.genres.includes(obj.uuid);
     })
+    var agerating = data.rels.filter(obj => {
+      return content.agerating.includes(obj.uuid);
+    })
   } else {
     var content = data;
   }
@@ -88,6 +91,13 @@ const Movie = ({ data, level }) => {
               </div>
             ))}
           </div>
+          <div className={styles.genrelist}>
+            {agerating.map((item, index) => (
+              <div className={styles.genre}>
+                {item.content.title}
+              </div>
+            ))}
+          </div>
           <div className={styles.mainpicture} style={{ backgroundImage: `url("${content.mainpicture.filename}")` }}>
           </div>
           <div className={styles.imagegallery}>
@@ -109,8 +119,8 @@ const Movie = ({ data, level }) => {
 
           </div>
 
-          {products && products.length > 0 && <SmallCardList items={products} title={resolveMerchandise[locale]} type="product"></SmallCardList>}
           {newsitems && newsitems.length > 0 && <SmallCardList items={newsitems} title={resolveNews[locale]} type="newsitem"></SmallCardList>}
+          {products && products.length > 0 && <SmallCardList items={products} title={resolveMerchandise[locale]} type="product"></SmallCardList>}
         </div>
       </main>
     </SbEditable>
